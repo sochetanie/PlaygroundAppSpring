@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
-    @GetMapping("/")
+  MathService ms = new MathService();
+
+  @GetMapping("/")
     public String welcomeTo() { return "WELCOME to Spring!!!!!!!!!!!"; }
 
     @GetMapping("/hello")
@@ -14,9 +16,13 @@ public class HelloController {
         return "Hello from Spring!";
     }
 
+    @GetMapping("/math/pi")
+    public String mathPI() {
+      return ms.showPI();
+    }
+
     @GetMapping("/math/calculate")
     public String mathService(@RequestParam (defaultValue = "add") String operation, @RequestParam int x, @RequestParam int y) {
-      MathService ms = new MathService();
       return ms.getCalculate(operation,x,y);
     }
 

@@ -1,7 +1,11 @@
 package com.example.demo;
 
 public class MathService {
-  static final double PI = 3.141592653589793;
+
+  public String showPI() {
+    final double PI = 3.141592653589793;
+    return String.format("%.15f", PI);
+  }
 
   public String getCalculate(String operation, int x, int y) {
     String result;
