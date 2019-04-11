@@ -28,7 +28,62 @@ public class HelloControllerTest {
         .andExpect(status().isOk())
         .andExpect(MockMvcResultMatchers.content().string("Hello from Spring!"));
 
+
   }
 
+  @Test
+  public void testShowPI() throws Exception {
+    RequestBuilder request = MockMvcRequestBuilders.get("/math/pi");
+
+    this.mvc.perform(request)
+        .andExpect(status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("3.141592653589793"));
+  }
+
+  @Test
+  public void getCalculateAdd() throws Exception {
+    RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?operation=add&x=4&y=6");
+
+    this.mvc.perform(request)
+        .andExpect(status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("10"));
+  }
+
+  @Test
+  public void getCalculateMultiply() throws Exception {
+    RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?operation=multiply&x=4&y=6");
+
+    this.mvc.perform(request)
+        .andExpect(status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("24"));
+  }
+
+  @Test
+  public void getCalculateSubtract() throws Exception {
+    RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?operation=subtract&x=4&y=6");
+
+    this.mvc.perform(request)
+        .andExpect(status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("-2"));
+  }
+
+  @Test
+  public void getCalculateDivide() throws Exception {
+    RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?operation=divide&x=24&y=6");
+
+    this.mvc.perform(request)
+        .andExpect(status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("4"));
+  }
+
+
+  @Test
+  public void getCalculateDefault() throws Exception {
+    RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?x=30&y=5");
+
+    this.mvc.perform(request)
+        .andExpect(status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("35"));
+  }
 
 }
