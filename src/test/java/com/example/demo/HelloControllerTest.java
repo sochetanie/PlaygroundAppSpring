@@ -50,7 +50,7 @@ public class HelloControllerTest {
   }
 
   @Test
-  public void getCalculateMultiply() throws Exception {
+  public void testCalculateMultiply() throws Exception {
     RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?operation=multiply&x=4&y=6");
 
     this.mvc.perform(request)
@@ -59,7 +59,7 @@ public class HelloControllerTest {
   }
 
   @Test
-  public void getCalculateSubtract() throws Exception {
+  public void testCalculateSubtract() throws Exception {
     RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?operation=subtract&x=4&y=6");
 
     this.mvc.perform(request)
@@ -68,7 +68,7 @@ public class HelloControllerTest {
   }
 
   @Test
-  public void getCalculateDivide() throws Exception {
+  public void testCalculateDivide() throws Exception {
     RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?operation=divide&x=24&y=6");
 
     this.mvc.perform(request)
@@ -84,6 +84,15 @@ public class HelloControllerTest {
     this.mvc.perform(request)
         .andExpect(status().isOk())
         .andExpect(MockMvcResultMatchers.content().string("35"));
+  }
+
+  @Test
+  public void testMultipleNumSum() throws Exception {
+    RequestBuilder request = MockMvcRequestBuilders.get("/math/sum?n=4&n=5&n=6");
+
+    this.mvc.perform(request)
+        .andExpect(status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("15"));
   }
 
 }

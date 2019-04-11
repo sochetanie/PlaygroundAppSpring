@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.List;
+
 public class MathService {
 
   public String showPI() {
@@ -36,6 +38,11 @@ public class MathService {
       return result;
 
   }
+
+  public String multipleNumSum(List<Integer> nums) {
+    return String.format("%s",(nums.stream().mapToInt(i -> i.intValue()).sum()));
+  }
+
 
 
 }
