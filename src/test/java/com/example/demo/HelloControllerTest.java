@@ -41,7 +41,7 @@ public class HelloControllerTest {
   }
 
   @Test
-  public void getCalculateAdd() throws Exception {
+  public void testCalculateAdd() throws Exception {
     RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?operation=add&x=4&y=6");
 
     this.mvc.perform(request)
@@ -78,7 +78,7 @@ public class HelloControllerTest {
 
 
   @Test
-  public void getCalculateDefault() throws Exception {
+  public void testCalculateDefault() throws Exception {
     RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?x=30&y=5");
 
     this.mvc.perform(request)
@@ -93,6 +93,15 @@ public class HelloControllerTest {
     this.mvc.perform(request)
         .andExpect(status().isOk())
         .andExpect(MockMvcResultMatchers.content().string("15"));
+  }
+
+  @Test
+  public void testVolume() throws Exception {
+    RequestBuilder request = MockMvcRequestBuilders.get("/math/volume/3/4/5");
+
+    this.mvc.perform(request)
+        .andExpect(status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("60"));
   }
 
 }

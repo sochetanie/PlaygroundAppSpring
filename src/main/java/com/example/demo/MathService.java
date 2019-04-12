@@ -30,10 +30,8 @@ public class MathService {
           z = x+y;
       }
 
-
       if(z == (long) z) result = String.format("%d",(long) z);
       else  result = String.format("%s",z);
-
 
       return result;
 
@@ -43,6 +41,10 @@ public class MathService {
     return String.format("%s",(nums.stream().mapToInt(i -> i.intValue()).sum()));
   }
 
+
+  public String volume(int x, int y, int z) {
+    return String.format("%s", (x*y*z));
+  }
 
 
 }

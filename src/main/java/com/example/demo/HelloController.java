@@ -33,4 +33,9 @@ public class HelloController {
     return ms.multipleNumSum(n);
   }
 
+  @GetMapping("/math/volume")
+  public String volume(@RequestParam int x, @RequestParam int y, @RequestParam int z) {
+    return ms.volume(x,y,z);
+  }
+
 }
