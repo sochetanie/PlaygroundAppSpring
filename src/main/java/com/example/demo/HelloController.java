@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,8 +34,8 @@ public class HelloController {
     return ms.multipleNumSum(n);
   }
 
-  @GetMapping("/math/volume")
-  public String volume(@RequestParam int x, @RequestParam int y, @RequestParam int z) {
+  @GetMapping("/math/volume/{x}/{y}/{z}")
+  public String volume(@PathVariable int x, @PathVariable int y, @PathVariable int z) {
     return ms.volume(x,y,z);
   }
 

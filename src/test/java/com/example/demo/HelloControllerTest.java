@@ -88,7 +88,7 @@ public class HelloControllerTest {
 
   @Test
   public void testMultipleNumSum() throws Exception {
-    RequestBuilder request = MockMvcRequestBuilders.get("/math/sum?n=4&n=5&n=6");
+    RequestBuilder request = MockMvcRequestBuilders.get("/math/sum?n=4&n=5&n=6"); // Query params
 
     this.mvc.perform(request)
         .andExpect(status().isOk())
@@ -97,7 +97,7 @@ public class HelloControllerTest {
 
   @Test
   public void testVolume() throws Exception {
-    RequestBuilder request = MockMvcRequestBuilders.get("/math/volume/3/4/5");
+    RequestBuilder request = MockMvcRequestBuilders.get("/math/volume/3/4/5"); // Path variables
 
     this.mvc.perform(request)
         .andExpect(status().isOk())
